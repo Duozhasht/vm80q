@@ -1,0 +1,101 @@
+﻿
+@{
+    Layout = "~/Views/Main/_LayoutIndex.cshtml";
+}
+
+@model List<vm80q.Models.Utilizador>
+
+
+<div class="col-md-6">
+    <div style="text-align:center;">
+        <h1>Melhor Pontuação</h1>
+        <br />
+    </div>
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Username
+            </th>
+            <th>
+                Pontuação
+            </th>
+        </tr>
+        @foreach (vm80q.Models.Utilizador util in ViewBag.JP)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(ModelItem => util.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => util.Max_pontuacao)
+                </td>
+
+            </tr>
+
+        }
+
+    </table>
+</div>
+
+<div class="col-md-6">
+    <div style="text-align:center;">
+        <h1>Jogos Terminados</h1>
+        <br />
+    </div>
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Username
+            </th>
+            <th>
+                Jogos Terminados
+            </th>
+        </tr>
+        @foreach (vm80q.Models.Utilizador util in ViewBag.JT)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(ModelItem => util.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => util.Jogos_terminados)
+                </td>
+
+            </tr>
+
+        }
+
+    </table>
+</div>
+
+<div class="col-md-6">
+    <div style="text-align:center;">
+        <h1>Jogos Totais</h1>
+        <br />
+    </div>
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Username
+            </th>
+            <th>
+                Jogos Totais
+            </th>
+        </tr>
+        @foreach (vm80q.Models.Utilizador util in ViewBag.JTT)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(ModelItem => util.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => util.Jogos_totais)
+                </td>
+
+            </tr>
+
+        }
+
+    </table>
+</div>
+

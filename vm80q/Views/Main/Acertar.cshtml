@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Main/_Layout.cshtml";
+}
+
+<div class="content-header">
+    <h1>
+        <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
+</div>
+<!-- Keep all page content within the page-content inset div! -->
+<div class="page-content inset">
+    <div class="row">
+        <div class="col-md-12 fill" style="text-align:center;"><h1>Parabens, Acertas-te!</h1></div>
+        <div class="imagee">
+
+            <img src="/Content/img/acertar.png" class="img-responsive" alt="img">
+
+        </div>
+        <div class="footer" style="left:35%;">
+            <div class="progress-button">
+                <button onclick="location.href='@Url.Action("Jogo","Main")'"><span>Continuar Jogo</span></button>
+            </div>
+            <div class="progress-button">
+                <button onclick="window.open('@ViewBag.Link','_newtab')"><span>Consultar Factos</span></button>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

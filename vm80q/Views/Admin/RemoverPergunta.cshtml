@@ -1,0 +1,135 @@
+﻿@using vm80q.Models;
+@model List<vm80q.Models.Pergunta>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>vm80q</title>
+    @System.Web.Optimization.Styles.Render("~/Content/css")
+
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="sidebar-image">
+                <img id="img_profile" src="/Content/img/business_user.png" class="img-circle">
+            </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a onclick="location.href='#'">Volta ao Mundo</a>
+                </li>
+                <li><a href="@Url.Action("Utilizador", "Admin")"><strong>Gestão de Utilizadores</strong></a></li>
+                <li><a href="@Url.Action("Pais", "Admin")"><strong>Gestão de Paises</strong></a></li>
+                <li><a href="@Url.Action("Area", "Admin")"><strong>Gestão de Area</strong></a></li>
+                <li><a href="@Url.Action("Pergunta", "Admin")"><strong>Gestão de Perguntas</strong></a></li>
+            </ul>
+            <div style="bottom:20px; left:85px; position:absolute">
+                <a href="@Url.Action("Logout","Main")" style="">Logout</a>
+            </div>
+        </div>
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+            <div class="col-md-12 fill" style="text-align:center;">
+                <h1>Gestão de Países</h1>
+                <br />
+            </div>
+
+            <div class="col-md-12 fill">
+                <table class="table table-hover">
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Pergunta
+                        </th>
+                        <th>
+                            Resposta_C
+                        </th>
+                        <th>
+                            Facto
+                        </th>
+                        <th>
+                            Media
+                        </th>
+                        <th>
+                            Nivel
+                        </th>
+                        <th>
+                            Pais
+                        </th>
+
+                        <th></th>
+                    </tr>
+                    @foreach (var perg in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(ModelItem => perg.Id_perg)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(ModelItem => perg.Pergunta_s)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(ModelItem => perg.Resposta_C)
+                            </td>
+                            <td>
+                                <a target="_blank" href=@Html.DisplayFor(ModelItem => perg.Url_content)>Link</a>
+                            </td>
+                            <td>
+                                @if (perg.Url_media != null)
+                                {
+                                    <a target="_blank" href=@Html.Raw(perg.Url_media+".jpg")>Link</a>
+                                }
+                                @if (perg.Url_media == null)
+                                {
+                                    @Html.Raw("-");
+                                }
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(ModelItem => perg.Nivel)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(ModelItem => perg.Pais.Nome)
+                            </td>
+
+                            <td>
+                                <a href="">Remover</a>
+                            </td>
+
+                        </tr>
+
+                    }
+
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Adicionar</td>
+
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript -->
+    @System.Web.Optimization.Scripts.Render("~/Content/js")
+    <!-- Custom JavaScript for the Menu Toggle -->
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("active");
+        });
+    </script>
+</body>
+</html>

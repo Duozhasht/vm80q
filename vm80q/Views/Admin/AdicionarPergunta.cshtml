@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+
+@model vm80q.Models.Pergunta
+
+<div class="col-lg-12">
+    <h1>Adicionar Pergunta</h1>
+    @using (Html.BeginForm("AdicionarPergunta", "Admin"))
+    {
+        @Html.ValidationSummary(true, "Erro ao Adicionar")
+        <div class="form-group">
+            @Html.LabelFor(m => m.Pergunta_s)
+            @Html.TextBoxFor(m => m.Pergunta_s, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Pergunta_s)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Resposta_1)
+            @Html.TextBoxFor(m => m.Resposta_1, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Resposta_1)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Resposta_2)
+            @Html.TextBoxFor(m => m.Resposta_2, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Resposta_2)
+        </div>
+       <div class="form-group">
+            @Html.LabelFor(m => m.Resposta_3)
+            @Html.TextBoxFor(m => m.Resposta_3, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Resposta_3)
+        </div>
+                <div class="form-group">
+            @Html.LabelFor(m => m.Resposta_4)
+            @Html.TextBoxFor(m => m.Resposta_4, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Resposta_4)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Resposta_C)
+            @Html.TextBoxFor(m => m.Resposta_C, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Resposta_C)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Id_pais, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Id_pais, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Id_pais)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Url_content, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Url_content, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Url_content)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Url_media, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Url_media, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Url_media)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Nivel, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Nivel, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Nivel)
+        </div>
+        
+        <input type="submit" value="Adicionar" class="btn btn-primary" />
+
+    }
+
+
+</div>

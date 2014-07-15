@@ -1,0 +1,101 @@
+﻿@using vm80q.Models;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>vm80q</title>
+    @System.Web.Optimization.Styles.Render("~/Content/css")
+
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="sidebar-image">
+                <img id="img_profile" src="/Content/img/business_user.png" class="img-circle">
+            </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a onclick="location.href='#'">Volta ao Mundo</a>
+                </li>
+                <li><a><strong>Utilizador</strong> :  @ViewBag.Jogo.Jogador.Username</a></li>
+                <li><a><strong>Vidas</strong> : @ViewBag.Jogo.Vidas</a></li>
+                <li><a><strong>Dificuldade</strong> : @ViewBag.Jogo.Dificuldade</a></li>
+                <li><a><strong>Pontuação</strong> : @ViewBag.Jogo.Pontuacao</a></li>
+                <li><a><strong>Paises Visitados</strong> : @ViewBag.Jogo.Paisesvisitados.Count</a></li>
+                <li><a><strong>Areas Visitadas</strong> : @ViewBag.Jogo.Areasvisitadas.Count</a></li>
+            </ul>
+        </div>
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+            <div class="content-header">
+                <h1>
+                    <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
+                    </h1>
+            </div>
+            <!-- Keep all page content within the page-content inset div! -->
+            <div class="page-content inset">
+                <div class="row">
+                    <div class="col-md-12" style="font-weight:bold; font-size:100px; text-align:center;"># @ViewBag.Pergunta.Id_perg</div>
+                    <div class="col-md-12 fill" style="text-align:center;"><h1 style="font-size:xx-large;">@ViewBag.Pergunta.Pergunta_s </h1></div>
+
+                    <div class="left-up-button">
+                        <div class="progress-button">
+                            <button id="Resposta_1" onclick="location.href='@Url.Action("ValidarPergunta", "Main", new { resposta_X = @ViewBag.Pergunta.Resposta_1, pergunta_id = @ViewBag.Pergunta.Id_perg })'"><span>@ViewBag.Pergunta.Resposta_1</span></button>
+                        </div>
+                    </div>
+
+                    <div class="right-up-button">
+                        <div class="progress-button">
+                            <button id="Resposta_2" onclick="location.href='@Url.Action("ValidarPergunta", "Main", new { resposta_X = @ViewBag.Pergunta.Resposta_2, pergunta_id = @ViewBag.Pergunta.Id_perg })'"><span>@ViewBag.Pergunta.Resposta_2</span></button>
+                        </div>
+                    </div>
+
+                    <div class="left-down-button">
+                        <div class="progress-button">
+                            <button id="Resposta_3" onclick="location.href='@Url.Action("ValidarPergunta", "Main", new { resposta_X = @ViewBag.Pergunta.Resposta_3, pergunta_id = @ViewBag.Pergunta.Id_perg })'"><span>@ViewBag.Pergunta.Resposta_3</span></button>
+                        </div>
+                    </div>
+
+                    <div class="right-down-button">
+                        <div class="progress-button">
+                            <button id="Reposta_4" onclick="location.href='@Url.Action("ValidarPergunta", "Main", new { resposta_X = @ViewBag.Pergunta.Resposta_4, pergunta_id = @ViewBag.Pergunta.Id_perg })'"><span>@ViewBag.Pergunta.Resposta_4</span></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    @System.Web.Optimization.Scripts.Render("~/Content/js")
+    <!-- Custom JavaScript for the Menu Toggle -->
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("active");
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#modalLogin').modal('show');
+        });
+    </script>
+
+    <!-- Modal Login-->
+    <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" >
+            <div class="modal-content">
+                <iframe title="YouTube video player" class="youtube-player" type="text/html"
+                        width="853" height="480" src="@ViewBag.Pergunta.Url_media"></iframe>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

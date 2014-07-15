@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Main/_LayoutIndex.cshtml";
+}
+
+<div class="content-header">
+    <h1>
+        <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
+</div>
+<!-- Keep all page content within the page-content inset div! -->
+<div class="page-content inset">
+    <div class="row">
+        <div class="col-md-12 bck-img">
+            <img src="/Content/img/world.jpg">
+        </div>
+        <div class="footer">
+            <div class="progress-button">
+                <button onclick="location.href='@Url.Action("Jogo","Main")'"><span>Iniciar Jogo</span></button>
+            </div>
+            <div class="progress-button">
+                <button onclick="location.href='@Url.Action("Pontuacoes","Main")'"><span>Consultar Pontuação</span></button>
+            </div>
+        </div>
+    </div>
+</div>

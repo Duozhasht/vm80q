@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+
+@model vm80q.Models.Area
+
+<div class="col-md-6">
+    <h1>Adicionar Area</h1>
+    @using (Html.BeginForm("AdicionarArea", "Admin"))
+{
+        @Html.ValidationSummary(true, "Erro ao Adicionar")
+        <div class="form-group">
+            @Html.LabelFor(m => m.Nome)
+            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Nome)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Coord_x1)
+            @Html.TextBoxFor(m => m.Coord_x1, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Coord_x1)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Coord_x2, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Coord_x2, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Coord_x2)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Coord_y1, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Coord_y1, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Coord_y1)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Coord_y2, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Coord_y2, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Coord_y2)
+        </div>
+
+            <input type="submit" value="Adicionar" class="btn btn-primary" />
+
+}
+
+
+</div>

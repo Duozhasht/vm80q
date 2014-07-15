@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/Main/_Layoutno.cshtml";
+}
+
+
+<div class="content-header">
+    <h1>
+        <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
+</div>
+<!-- Keep all page content within the page-content inset div! -->
+<div class="page-content inset">
+    <div class="row">
+        <div class="col-md-12 fill" style="text-align:center;"><h1>#@ViewBag.Pergunta.Id_perg - @ViewBag.Pergunta.Pergunta_s</h1></div>
+
+        <div class="image">
+
+            <img src="@ViewBag.Pergunta.Url_media" class="img-responsive" alt="img">
+
+        </div>
+
+
+        <div class="left-up-buttoni">
+            <div class="progress-buttoni">
+                <button id="Resposta_1" onclick="location.href='@Url.Action("ValidarPergunta", "Main", new { resposta_X = @ViewBag.Pergunta.Resposta_1, pergunta_id = @ViewBag.Pergunta.Id_perg })'"><span>@ViewBag.Pergunta.Resposta_1</span></button>
+            </div>
+        </div>
+
+        <div class="right-up-buttoni">
+            <div class="progress-buttoni">
+                <button id="Resposta_1" onclick="location.href='@Url.Action("ValidarPergunta", "Main", new { resposta_X = @ViewBag.Pergunta.Resposta_2, pergunta_id = @ViewBag.Pergunta.Id_perg })'"><span>@ViewBag.Pergunta.Resposta_2</span></button>
+            </div>
+        </div>
+
+        <div class="left-down-buttoni">
+            <div class="progress-buttoni">
+                <button id="Resposta_1" onclick="location.href='@Url.Action("ValidarPergunta", "Main", new { resposta_X = @ViewBag.Pergunta.Resposta_3, pergunta_id = @ViewBag.Pergunta.Id_perg })'"><span>@ViewBag.Pergunta.Resposta_3</span></button>
+            </div>
+        </div>
+
+        <div class="right-down-buttoni">
+            <div class="progress-buttoni">
+                <button id="Resposta_1" onclick="location.href='@Url.Action("ValidarPergunta", "Main", new { resposta_X = @ViewBag.Pergunta.Resposta_4, pergunta_id = @ViewBag.Pergunta.Id_perg })'"><span>@ViewBag.Pergunta.Resposta_4</span></button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,93 @@
+﻿@{
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+@model List<vm80q.Models.Pergunta>
+
+<div class="col-md-12 fill" style="text-align:center;">
+    <h1>Gestão de Perguntas</h1>
+    <br />
+</div>
+
+<div class="col-md-12 fill">
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Pergunta
+            </th>
+            <th>
+                Resposta_C
+            </th>
+            <th>
+                Facto
+            </th>
+            <th>
+                Media
+            </th>
+            <th>
+                Nivel
+            </th>
+            <th>
+                Pais
+            </th>
+
+            <th></th>
+        </tr>
+        @foreach (var perg in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(ModelItem => perg.Id_perg)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => perg.Pergunta_s)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => perg.Resposta_C)
+                </td>
+                <td>
+                    <a target="_blank" href=@Html.DisplayFor(ModelItem => perg.Url_content)>Link</a>
+                </td>
+                <td>
+                    @if (perg.Url_media != null) { 
+                    <a target="_blank" href=@Html.Raw(perg.Url_media+".jpg")>Link</a>
+                    }
+                    @if (perg.Url_media == null) { 
+                        @Html.Raw("-");
+                    }
+    
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => perg.Nivel)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => perg.Pais.Nome)
+                </td>
+
+                <td>
+                    <a href="@Url.Action("RemoverPergunta", "Admin", new { id_pergunta = perg.Id_perg})">Remover</a>
+                </td>
+
+            </tr>
+
+        }
+
+        <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>
+                <a href="@Url.Action("AdicionarPergunta", "Admin")">Adicionar</a>
+            </td>
+
+        </tr>
+
+    </table>
+</div>

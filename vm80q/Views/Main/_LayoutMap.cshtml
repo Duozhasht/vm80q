@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>vm80q</title>
+    @System.Web.Optimization.Styles.Render("~/Content/css")
+
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="sidebar-image">
+                <img id="img_profile" src="/Content/img/business_user.png" class="img-circle">
+            </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a onclick="location.href='@Url.Action("Index","Main")'">Volta ao Mundo</a>
+                </li>
+                <li><a><strong>Utilizador</strong> :  @ViewBag.Jogo.Jogador.Username</a></li>
+                <li><a><strong>Vidas</strong> : @ViewBag.Jogo.Vidas</a></li>
+                <li><a><strong>Dificuldade</strong> : @ViewBag.Jogo.Dificuldade</a></li>
+                <li><a><strong>Pontuação</strong> : @ViewBag.Jogo.Pontuacao</a></li>
+                <li><a><strong>Paises Visitados</strong> : @ViewBag.Jogo.Paisesvisitados.Count</a></li>
+                <li><a><strong>Areas Visitadas</strong> : @ViewBag.Jogo.Areasvisitadas.Count</a></li>
+
+            </ul>
+        </div>
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+            <div class="content-header">
+                <h1>
+                    <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
+            </div>
+            <!-- Keep all page content within the page-content inset div! -->
+
+            <div class="page-content inset">
+                <div class="row">
+                    <div style="position: fixed; padding: 0px; width: 80%; height: 100%;">
+                        <div id="map" style="width:100%;height:100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript -->
+    @System.Web.Optimization.Scripts.Render("~/Content/js")
+    <!-- Custom JavaScript for the Menu Toggle -->
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("active");
+        });
+    </script>
+
+    @RenderBody()
+
+</body>
+</html>

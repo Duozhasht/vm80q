@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+@model List<vm80q.Models.Utilizador>
+
+<div class="col-md-12 fill" style="text-align:center;">
+    <h1>Gestão de Utilizadores</h1>
+    <br />
+</div>
+
+<div class="col-md-12 fill">
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Username
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Tipo
+            </th>
+            <th>
+                Bloqueado
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var util in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(ModelItem => util.Id_util)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => util.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => util.Email)
+                </td>
+                <td>
+                    @if(util.Tipo == 1){
+                        @Html.Raw("Administrador") 
+                    }
+                    @if (util.Tipo == 0)
+                    {
+                        @Html.Raw("Jogador")
+                    }
+
+                </td>
+                <td>
+                    @if (util.Bloqueado == 1)
+                    {
+                        @Html.Raw("Sim")
+                    }
+                    @if (util.Bloqueado == 0)
+                    {
+                        @Html.Raw("Não")
+                    }
+                </td>
+
+                <td>
+                    <a href="@Url.Action("TogglePromover", "Admin", new { id_util = util.Id_util})">Promover</a>
+                    <a href="@Url.Action("ToggleBloquear", "Admin", new { id_util = util.Id_util})">Bloquear</a>  
+                </td>
+
+            </tr>
+
+        }
+
+    </table>
+</div>

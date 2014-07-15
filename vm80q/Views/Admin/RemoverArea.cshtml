@@ -1,0 +1,147 @@
+﻿
+@using vm80q.Models;
+@model List<vm80q.Models.Area>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>vm80q</title>
+    @System.Web.Optimization.Styles.Render("~/Content/css")
+
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="sidebar-image">
+                <img id="img_profile" src="/Content/img/business_user.png" class="img-circle">
+            </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a onclick="location.href='#'">Volta ao Mundo</a>
+                </li>
+                <li><a href="@Url.Action("Utilizador", "Admin")"><strong>Gestão de Utilizadores</strong></a></li>
+                <li><a href="@Url.Action("Pais", "Admin")"><strong>Gestão de Paises</strong></a></li>
+                <li><a href="@Url.Action("Area", "Admin")"><strong>Gestão de Area</strong></a></li>
+                <li><a href="@Url.Action("Pergunta", "Admin")"><strong>Gestão de Perguntas</strong></a></li>
+            </ul>
+        </div>
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+            <div class="col-md-12 fill" style="text-align:center;">
+                <h1>Gestão de Areas</h1>
+                <br />
+            </div>
+
+            <div class="col-md-12 fill">
+                <table class="table table-hover">
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Nome
+                        </th>
+                        <th>
+                            Coord_x1
+                        </th>
+                        <th>
+                            Coord_x2
+                        </th>
+                        <th>
+                            Coord_y1
+                        </th>
+                        <th>
+                            Coord_y2
+                        </th>
+
+                        <th></th>
+                    </tr>
+                    @foreach (var area in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(ModelItem => area.Id_area)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(ModelItem => area.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(ModelItem => area.Coord_x1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(ModelItem => area.Coord_x1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(ModelItem => area.Coord_y1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(ModelItem => area.Coord_y2)
+                            </td>
+
+                            <td>
+                                <a href="@Url.Action("RemoverArea", "Admin", new { id_area = area.Id_area})">Remover</a>
+                            </td>
+
+                        </tr>
+
+                    }
+
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>
+                            <a href="@Url.Action("AdicionarArea", "Admin")">Adicionar</a>
+                        </td>
+
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript -->
+    @System.Web.Optimization.Scripts.Render("~/Content/js")
+    <!-- Custom JavaScript for the Menu Toggle -->
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("active");
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#modalLogin').modal('show');
+        });
+    </script>
+
+    <!-- Modal Login-->
+    <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Erro</h4>
+                </div>
+
+                    <div class="modal-body">
+                     <p>Nao é possivel remover esta area pois ela contem pelo menos um pais</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </div>
+             
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

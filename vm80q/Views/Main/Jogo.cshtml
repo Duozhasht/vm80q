@@ -1,0 +1,115 @@
+﻿@model List<vm80q.Models.Area>
+@{
+    Layout = "~/Views/Main/_LayoutMap.cshtml";
+}
+
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<script type="text/javascript" src="~/Content/js/label.js"></script>
+
+
+<script type="text/javascript">
+    var myLatlng = new google.maps.LatLng(45,0);
+
+    var zoom = 2;
+    var myStyle = [
+      {
+          featureType: "administrative",
+          elementType: "labels",
+          stylers: [
+            { visibility: "off" }
+          ]
+      },{
+          featureType: "poi",
+          elementType: "labels",
+          stylers: [
+            { visibility: "off" }
+          ]
+      },{
+          featureType: "water",
+          elementType: "labels",
+          stylers: [
+            { visibility: "off" }
+          ]
+      },{
+          featureType: "road",
+          elementType: "labels",
+          stylers: [
+            { visibility: "off" }
+          ]
+      }
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        mapTypeControlOptions: {
+            mapTypeIds: ['mystyle']
+        },
+        mapTypeId: 'mystyle',
+        center: myLatlng,
+        zoom: zoom,
+        draggable: true,
+        disableDefaultUI: true,
+        disableDoubleClickZoom : true
+    });
+
+    map.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'My Style' }));
+
+    //Gerar Rectangulos
+
+
+    @foreach (var area in Model)
+       {
+        <text>
+       var bounds@(Html.DisplayFor(no => area.Id_area)) = new google.maps.LatLngBounds(new google.maps.LatLng(@(Html.DisplayFor(x1 => area.Coord_x1 )+",") @(Html.DisplayFor(y1 => area.Coord_y1 )+"),") new google.maps.LatLng(@(Html.DisplayFor(x2 => area.Coord_x2 )+",") @(Html.DisplayFor(y2 => area.Coord_y2 )+"))");
+       var rectangle@(Html.DisplayFor(no => area.Id_area)) = new google.maps.Rectangle();
+
+       var rectOptions@(Html.DisplayFor(no => area.Id_area)) = {
+           strokeColor: "#7d131e",
+           strokeOpacity: 0.8,
+           strokeWeight: 2,
+           fillColor: "#9d1826",
+           fillOpacity: 0.35,
+           map: map,
+           bounds: bounds@(Html.DisplayFor(no => area.Id_area))
+       };
+       rectangle@(Html.DisplayFor(no => area.Id_area)).setOptions(rectOptions@(Html.DisplayFor(no => area.Id_area)));
+       
+
+    google.maps.event.addListener(rectangle@(Html.DisplayFor(no => area.Id_area)), 'click', function() {
+        map.setZoom(3);
+        map.setCenter(rectangle@(Html.DisplayFor(no => area.Id_area)).getBounds().getCenter());
+        rectangle@(Html.DisplayFor(no => area.Id_area)).setMap(null);
+
+                @foreach (var pais in area.Paises)
+        {
+            <text>
+            var marker@(Html.DisplayFor(na => pais.Id_pais)) = new google.maps.Marker({
+                position: new google.maps.LatLng(@(Html.DisplayFor(x1 => pais.Coord_x1 )+",") @(Html.DisplayFor(y1 => pais.Coord_y1 )+"),")
+                    draggable: false,
+            map: map,
+            title: "@(Html.DisplayFor(no => pais.Nome))"
+        });
+
+            
+        var label = new Label({
+            map: map
+        });
+        label.bindTo('position', marker@(Html.DisplayFor(na => pais.Id_pais)), 'position');
+        label.bindTo('text', marker@(Html.DisplayFor(na => pais.Id_pais)), 'title');
+
+        google.maps.event.addListener(marker@(Html.DisplayFor(na => pais.Id_pais)), 'click', function() {
+            window.location.href = "@Url.Action("Pergunta", "Main", new { id_pais = pais.Id_pais })";
+        });
+
+        </text>
+            
+            
+    }
+
+
+    });
+
+    </text>
+       }
+
+
+</script> 

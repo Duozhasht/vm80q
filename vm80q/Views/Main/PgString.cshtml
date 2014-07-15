@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = "~/Views/Main/_Layoutno.cshtml";
+}
+
+
+<div class="content-header">
+    <h1>
+        <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
+    </h1>
+</div>
+<!-- Keep all page content within the page-content inset div! -->
+<div class="page-content inset">
+    <div class="row">
+        <div class="col-md-12" style="font-weight:bold; font-size:100px; text-align:center;"># @ViewBag.Pergunta.Id_perg</div>
+        <div class="col-md-12 fill" style="text-align:center;"><h1 style="font-size:xx-large;">@ViewBag.Pergunta.Pergunta_s </h1></div>
+
+        <div class="left-up-button">
+            <div class="progress-button">
+                <button id="Resposta_1" onclick="location.href='@Url.Action("ValidarPergunta", "Main", new { resposta_X = @ViewBag.Pergunta.Resposta_1, pergunta_id = @ViewBag.Pergunta.Id_perg })'"><span>@ViewBag.Pergunta.Resposta_1</span></button>
+            </div>
+        </div>
+
+        <div class="right-up-button">
+            <div class="progress-button">
+                <button id="Resposta_2" onclick="location.href='@Url.Action("ValidarPergunta", "Main", new { resposta_X = @ViewBag.Pergunta.Resposta_2, pergunta_id = @ViewBag.Pergunta.Id_perg })'"><span>@ViewBag.Pergunta.Resposta_2</span></button>
+            </div>
+        </div>
+
+        <div class="left-down-button">
+            <div class="progress-button">
+                <button id="Resposta_3" onclick="location.href='@Url.Action("ValidarPergunta", "Main", new { resposta_X = @ViewBag.Pergunta.Resposta_3, pergunta_id = @ViewBag.Pergunta.Id_perg })'"><span>@ViewBag.Pergunta.Resposta_3</span></button>
+            </div>
+        </div>
+
+        <div class="right-down-button">
+            <div class="progress-button">
+                <button id="Reposta_4" onclick="location.href='@Url.Action("ValidarPergunta", "Main", new { resposta_X = @ViewBag.Pergunta.Resposta_4, pergunta_id = @ViewBag.Pergunta.Id_perg })'"><span>@ViewBag.Pergunta.Resposta_4</span></button>
+            </div>
+        </div>
+
+    </div>
+</div>
